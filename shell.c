@@ -62,7 +62,7 @@ runcmd(struct cmd *cmd)
       exit(0);
 //    fprintf(stderr, "exec not implemented\n");
     // Your code here ...
-    execl(ecmd->argv[0], ecmd->argv);
+//    execl(ecmd->argv[0], ecmd->argv);
     fprintf(stderr, "exec %s failed\n", ecmd->argv[0]);
     break;
 
