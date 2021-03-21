@@ -62,7 +62,9 @@ runcmd(struct cmd *cmd)
       exit(0);
 //    fprintf(stderr, "exec not implemented\n");
     // Your code here ...
-//    execl(ecmd->argv[0], ecmd->argv);
+    execlp(ecmd->argv, ecmd->argv[0]);
+// so ecmd->argv[0] is like the type of command you write. Ex: "ls".
+// EXELCP i think is the one we want to use because the entire PATH is not required
     fprintf(stderr, "exec %s failed\n", ecmd->argv[0]);
     break;
 
