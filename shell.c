@@ -60,26 +60,21 @@ runcmd(struct cmd *cmd)
     ecmd = (struct execcmd*)cmd;
     if(ecmd->argv[0] == 0)
       exit(0);
-//    fprintf(stderr, "exec not implemented\n");
-    // Your code here ...
     execvp(ecmd->argv[0], ecmd->argv);
-// so ecmd->argv[0] is like the type of command you write. Ex: "ls".
-// EXELCP i think is the one we want to use because the entire PATH is not required
+// ecmd->argv[0] is like the type of command you write. Ex: "ls".
+// EXECVP i think is the one we want to use because the entire PATH is not required
     fprintf(stderr, "exec %s failed\n", ecmd->argv[0]);
     break;
 
   case '>':
   case '<':
     rcmd = (struct redircmd*)cmd;
-//    fprintf(stderr, "redir not implemented\n");
-    // Your code here ...
-    // if file doesn't open, throw an error
-    // open(rcmd->fd)
+
     close(rcmd->fd);
     if(open(rcmd->file, rcmd->mode) < 0)
     {
         fprintf(stderr, "Open %s failed.\n", rcmd->file);
-        exit();
+        exit(0);
     }
     runcmd(rcmd->cmd);
     break;
