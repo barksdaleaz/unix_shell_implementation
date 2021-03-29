@@ -99,8 +99,8 @@ runcmd(struct cmd *cmd)
       }
       close(p[0]);
       close(p[1]);
-      wait();
-      wait();
+      wait(&r);
+      wait(&r);
     break;
   }    
   exit(0);
